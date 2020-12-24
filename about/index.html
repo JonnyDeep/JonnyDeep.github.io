@@ -382,6 +382,23 @@
 <!-- City版安装代码已完成 -->
     
     
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: '1608702381000', // 可选。默认为 location.href
+        owner: 'JonnyDeep',
+        repo: 'https://jonnydeep.github.io/',
+        oauth: {
+            client_id: 'bf9ef8744cb0d37c5fa0',
+            client_secret: 'ae52af50f384ce9f24c6126eb16d73bde57c55e9',
+        },
+    })
+    gitment.render('container')
+
+</script>
+
     <!-- gitalk评论 -->
 
     <!-- utteranc评论 -->
