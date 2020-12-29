@@ -20,17 +20,23 @@
     <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://jonnydeep.github.io/tags/Algorithm/index.html">
+    <meta name="description" content="go ChannelChannel相关概念 通道（channel）可以在多个goroutine之间安全的传值。 通道可以用作变量、函数参数、结构体字段······ 传教通道用make函数，并指定其传输数据的类型  c :&#x3D; make(chan int)    使用左箭头操作符&lt;-向通道发送值或者从通道接收值  发送：c &lt;- 99 接收：r :&#x3D; &lt;- c    发送操作会等待直">
+<meta property="og:type" content="article">
+<meta property="og:title" content="channel">
+<meta property="og:url" content="https://jonnydeep.github.io/2020/12/28/channel/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="go ChannelChannel相关概念 通道（channel）可以在多个goroutine之间安全的传值。 通道可以用作变量、函数参数、结构体字段······ 传教通道用make函数，并指定其传输数据的类型  c :&#x3D; make(chan int)    使用左箭头操作符&lt;-向通道发送值或者从通道接收值  发送：c &lt;- 99 接收：r :&#x3D; &lt;- c    发送操作会等待直">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-28T09:31:44.000Z">
+<meta property="article:modified_time" content="2020-12-29T01:46:15.573Z">
 <meta property="article:author" content="PIKAPIKA">
+<meta property="article:tag" content="go">
+<meta property="article:tag" content="channal">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
-    <title>PIKAPIKA&#39;s Blog</title>
+    <title>channel · PIKAPIKA&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -211,12 +217,23 @@
 <meta name="generator" content="Hexo 5.3.0"></head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >PIKAPIKA&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">channel</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>PIKAPIKA's Blog</a>
 </header>
@@ -228,24 +245,76 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            channel
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "go">go</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "channal">channal</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">629</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/12/28</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -346,42 +415,126 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/12/23/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%80%E9%9B%86/" >
-            
-                <span>算法第一集 算法时间复杂度O</span>
-        </a>
-        <div class="abstract-content">
-            很长时间不看算法了，整天纠结在业务层面。看似很忙，其实人快废掉了。现在把算法复习一遍，开专题记录一下，复习完开始刷题。期间会记录一下分布式相关的一些知识。
-二分法二分法是用来在有序集合中查找某个元素的查找算法，如果能找个这个元素那么返回该元素的下标，否正返回null。
-示意图
-show me code12345678910111213141516def binary_search(list,elem):    # 确定二分搜索的起始位置和结束位置    low = 0     high = len(list) - 1        # 直到没有元素的时候，循环结束    while lo...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/12/23</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Algorithm">Algorithm</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="go-Channel"><a href="#go-Channel" class="headerlink" title="go Channel"></a>go Channel</h1><h2 id="Channel相关概念"><a href="#Channel相关概念" class="headerlink" title="Channel相关概念"></a>Channel相关概念</h2><ul>
+<li>通道（channel）可以在多个goroutine之间安全的传值。</li>
+<li>通道可以用作变量、函数参数、结构体字段······</li>
+<li>传教通道用make函数，并指定其传输数据的类型<blockquote>
+<ul>
+<li>c := make(chan int)</li>
+</ul>
+</blockquote>
+</li>
+<li>使用左箭头操作符&lt;-向通道发送值或者从通道接收值<blockquote>
+<ul>
+<li>发送：c &lt;- 99</li>
+<li>接收：r := &lt;- c</li>
+</ul>
+</blockquote>
+</li>
+<li>发送操作会等待直到另一个goroutine尝试对该通道进行接收操作为止。<blockquote>
+<ul>
+<li>执行发送操作的goroutine在等待期间将无法执行其他操作</li>
+<li>未在等待通道操作的goroutine仍然可以继续自由运行</li>
+</ul>
+</blockquote>
+</li>
+<li>执行接收操作的goroutine将等待直到另一个goroutine尝试向该通道进行发送操作为止。</li>
+</ul>
+<h3 id="show-me-code-demo1"><a href="#show-me-code-demo1" class="headerlink" title="show me code demo1"></a>show me code demo1</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++&#123;</span><br><span class="line">        <span class="keyword">go</span> sleepyGopher(i,c)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++&#123;</span><br><span class="line">        gopherID:=&lt;-c</span><br><span class="line">        fmt.Println(<span class="string">&quot;gopher &quot;</span>,gopherID,<span class="string">&quot; has finished sleeping&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sleepyGopher</span><span class="params">(id <span class="keyword">int</span>,c <span class="keyword">chan</span> <span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line">    time.Sleep(<span class="number">3</span>*time.Second)</span><br><span class="line">    fmt.Println(<span class="string">&quot;... &quot;</span>,id,<span class="string">&quot; snore ...&quot;</span>)</span><br><span class="line">    c &lt;- id</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="select-处理多个通道"><a href="#select-处理多个通道" class="headerlink" title="select 处理多个通道"></a>select 处理多个通道</h2><ul>
+<li><p>等待不同类型的值</p>
+</li>
+<li><p>time.After 函数，返回一个通道，该通道在指定时间后会接收到一个值（发送该值的goroutine是Go运行时的一部分）</p>
+</li>
+<li><p>select 和 switch 有点像</p>
+<blockquote>
+<ul>
+<li>该语句包含的每个case都持有一个通道，用来发送或接收数据。</li>
+<li>select 会等待直到某个case分支的操作就绪，然后就会执行该case分支。</li>
+</ul>
+</blockquote>
+<h3 id="show-me-code-demo2"><a href="#show-me-code-demo2" class="headerlink" title="show me code demo2"></a>show me code demo2</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;time&quot;</span></span><br><span class="line">    <span class="string">&quot;math/rand&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++&#123;</span><br><span class="line">        <span class="keyword">go</span> sleepyGopher(i,c)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    timeout := time.After(<span class="number">2</span> * time.Second)</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++&#123;</span><br><span class="line">        <span class="keyword">select</span>&#123;</span><br><span class="line">            <span class="keyword">case</span> gopherID := &lt;- c:</span><br><span class="line">                fmt.Println(<span class="string">&quot;gopher &quot;</span>,gopherID,<span class="string">&quot; has  finished  sleeping&quot;</span>)</span><br><span class="line">            <span class="keyword">case</span> &lt;- timeout:</span><br><span class="line">                fmt.Println(<span class="string">&quot;my patience ran out&quot;</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sleepyGopher</span><span class="params">(id <span class="keyword">int</span>,c <span class="keyword">chan</span> <span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line">    time.Sleep(time.Duration(rand.Intn(<span class="number">4000</span>))*time.Millisecond)</span><br><span class="line">    c &lt;- id</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="nil-通道"><a href="#nil-通道" class="headerlink" title="nil 通道"></a>nil 通道</h2></li>
+<li><p>如果不适用make初始化通道，那么通道变量的值就是nil(零值)</p>
+</li>
+<li><p>对nil通道进行发送或接收不会引起panic，但会导致永久阻塞。</p>
+</li>
+<li><p>对nil通道执行close函数，那么会引起panic</p>
+</li>
+<li><p>nil通道的用处：</p>
+<blockquote>
+<ul>
+<li>对于包含select语句的循环，如果不希望每次循环都等待select所涉及的所有通道，可以将某些通道设为nil，等到发送值准备就绪之后，再将通道变成一个非nil值并执行发送操作。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+
     </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://jonnydeep.github.io">PIKAPIKA</a>
+            <p>原文链接：<a href="https://jonnydeep.github.io/2020/12/28/channel/">https://jonnydeep.github.io/2020/12/28/channel/</a>
+            <p>发表日期：<a href="https://jonnydeep.github.io/2020/12/28/channel/">December 28th 2020, 5:31:44 pm</a>
+            <p>更新日期：<a href="https://jonnydeep.github.io/2020/12/28/channel/">December 29th 2020, 9:46:15 am</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/12/29/%E9%98%BB%E5%A1%9E%E5%92%8C%E6%AD%BB%E9%94%81/" title= "阻塞和死锁">
+                    <div class="nextTitle">阻塞和死锁</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/12/28/goroutine/" title= "goroutine">
+                    <div class="prevTitle">goroutine</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+    <div id="lv-container" data-id="city" data-uid= MTAyMC81MjI2NS8yODc0NA==>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -457,6 +610,24 @@ show me code12345678910111213141516def binary_search(list,elem):    # 确定二�
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#go-Channel"><span class="toc-number">1.</span> <span class="toc-text">go Channel</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Channel%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">Channel相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#show-me-code-demo1"><span class="toc-number">1.1.1.</span> <span class="toc-text">show me code demo1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select-%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA%E9%80%9A%E9%81%93"><span class="toc-number">1.2.</span> <span class="toc-text">select 处理多个通道</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#show-me-code-demo2"><span class="toc-number">1.2.1.</span> <span class="toc-text">show me code demo2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nil-%E9%80%9A%E9%81%93"><span class="toc-number">1.3.</span> <span class="toc-text">nil 通道</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -645,6 +816,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>

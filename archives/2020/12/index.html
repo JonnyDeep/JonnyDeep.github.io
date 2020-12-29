@@ -354,6 +354,144 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/12/29/%E9%98%BB%E5%A1%9E%E5%92%8C%E6%AD%BB%E9%94%81/" >
+            
+                <span>阻塞和死锁</span>
+        </a>
+        <div class="abstract-content">
+            阻塞和死锁阻塞和死锁相关概念
+当goroutine在等待通道的发送或接收时，我们就说它被阻塞了。
+除了goroutine本身占用少量内存歪，被阻塞的goroutine并不会消耗任何其它资源。
+
+goroutine静静的停在那里，等待导致其阻塞的事情来解除阻塞。
+
+
+
+当一个或多个goroutine因为某些永远无法发生的事情被阻塞时，我们称这种情况为死锁。而出现死锁的程序通常会崩溃或挂起。
+
+案例地鼠装配线
+show me code 1123456789101112131415161718192021222324252627282930313233343536373839404142434...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/12/29</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "go">go</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "block&lock">block&lock</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/12/28/channel/" >
+            
+                <span>channel</span>
+        </a>
+        <div class="abstract-content">
+            go ChannelChannel相关概念
+通道（channel）可以在多个goroutine之间安全的传值。
+通道可以用作变量、函数参数、结构体字段······
+传教通道用make函数，并指定其传输数据的类型
+
+c := make(chan int)
+
+
+
+使用左箭头操作符&lt;-向通道发送值或者从通道接收值
+
+发送：c &lt;- 99
+接收：r := &lt;- c
+
+
+
+发送操作会等待直到另一个goroutine尝试对该通道进行接收操作为止。
+
+执行发送操作的goroutine在等待期间将无法执行其他操作
+未在等待通道操作的goroutine仍然可以继续自由运行
+
+
+
+执行接收...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/12/28</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "go">go</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "channal">channal</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/12/28/goroutine/" >
+            
+                <span>goroutine</span>
+        </a>
+        <div class="abstract-content">
+            goroutine相关概念
+在Go中，独立的任务叫做gorotine
+虽然goroutine与其它语言中的协程、进程、线程都有相似之处，但是goroutine和他们并不完全相同
+Goroutine 创建效率非常高
+Go能直接了当的协同多个并发（concurrent）操作
+
+
+在某些语言中，将顺序式代码转化为并发式代码需要做大量的修改
+在Go里，无需修改现有顺序式代码，通过goroutie以并发的方式运行任意数量的任务 
+每次使用go关键字都会产生一个新的goroutine。
+表面上看，goroutine 似乎在同时运行，其实不然。
+计算机使用”分时“技术，多个goroutine轮流执行。...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/12/28</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "go">go</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "goroutine">goroutine</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/12/23/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%80%E9%9B%86/" >
             
                 <span>算法第一集 算法时间复杂度O</span>
@@ -479,9 +617,30 @@ show me code12345678910111213141516def binary_search(list,elem):    # 确定二�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 1
+        Total : 4
         </div>
         <!-- search  -->
         
@@ -501,6 +660,21 @@ show me code12345678910111213141516def binary_search(list,elem):    # 确定二�
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">12/29</span><a class="archive-post-title" href= "/2020/12/29/%E9%98%BB%E5%A1%9E%E5%92%8C%E6%AD%BB%E9%94%81/" >阻塞和死锁</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/28</span><a class="archive-post-title" href= "/2020/12/28/channel/" >channel</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/28</span><a class="archive-post-title" href= "/2020/12/28/goroutine/" >goroutine</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">12/23</span><a class="archive-post-title" href= "/2020/12/23/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%80%E9%9B%86/" >算法第一集 算法时间复杂度O</a>
         </li>
     
@@ -510,6 +684,14 @@ show me code12345678910111213141516def binary_search(list,elem):    # 确定二�
     <div class="sidebar-tags-name">
     
         <span class="sidebar-tag-name" data-tags="Algorithm"><span class="iconfont-archer">&#xe606;</span>Algorithm</span>
+    
+        <span class="sidebar-tag-name" data-tags="go"><span class="iconfont-archer">&#xe606;</span>go</span>
+    
+        <span class="sidebar-tag-name" data-tags="channal"><span class="iconfont-archer">&#xe606;</span>channal</span>
+    
+        <span class="sidebar-tag-name" data-tags="goroutine"><span class="iconfont-archer">&#xe606;</span>goroutine</span>
+    
+        <span class="sidebar-tag-name" data-tags="block&lock"><span class="iconfont-archer">&#xe606;</span>block&lock</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

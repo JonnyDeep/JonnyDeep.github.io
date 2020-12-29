@@ -20,17 +20,23 @@
     <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://jonnydeep.github.io/tags/Algorithm/index.html">
+    <meta name="description" content="goroutine相关概念 在Go中，独立的任务叫做gorotine 虽然goroutine与其它语言中的协程、进程、线程都有相似之处，但是goroutine和他们并不完全相同 Goroutine 创建效率非常高 Go能直接了当的协同多个并发（concurrent）操作   在某些语言中，将顺序式代码转化为并发式代码需要做大量的修改 在Go里，无需修改现有顺序式代码，通过goroutie以并发的方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="goroutine">
+<meta property="og:url" content="https://jonnydeep.github.io/2020/12/28/goroutine/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="goroutine相关概念 在Go中，独立的任务叫做gorotine 虽然goroutine与其它语言中的协程、进程、线程都有相似之处，但是goroutine和他们并不完全相同 Goroutine 创建效率非常高 Go能直接了当的协同多个并发（concurrent）操作   在某些语言中，将顺序式代码转化为并发式代码需要做大量的修改 在Go里，无需修改现有顺序式代码，通过goroutie以并发的方">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-28T07:13:05.000Z">
+<meta property="article:modified_time" content="2020-12-29T08:34:31.221Z">
 <meta property="article:author" content="PIKAPIKA">
+<meta property="article:tag" content="go">
+<meta property="article:tag" content="goroutine">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
-    <title>PIKAPIKA&#39;s Blog</title>
+    <title>goroutine · PIKAPIKA&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -211,12 +217,23 @@
 <meta name="generator" content="Hexo 5.3.0"></head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >PIKAPIKA&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">goroutine</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>PIKAPIKA's Blog</a>
 </header>
@@ -228,24 +245,76 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            goroutine
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "go">go</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "goroutine">goroutine</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">261</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/12/28</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -346,42 +415,93 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/12/23/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%80%E9%9B%86/" >
-            
-                <span>算法第一集 算法时间复杂度O</span>
-        </a>
-        <div class="abstract-content">
-            很长时间不看算法了，整天纠结在业务层面。看似很忙，其实人快废掉了。现在把算法复习一遍，开专题记录一下，复习完开始刷题。期间会记录一下分布式相关的一些知识。
-二分法二分法是用来在有序集合中查找某个元素的查找算法，如果能找个这个元素那么返回该元素的下标，否正返回null。
-示意图
-show me code12345678910111213141516def binary_search(list,elem):    # 确定二分搜索的起始位置和结束位置    low = 0     high = len(list) - 1        # 直到没有元素的时候，循环结束    while lo...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/12/23</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Algorithm">Algorithm</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="goroutine"><a href="#goroutine" class="headerlink" title="goroutine"></a>goroutine</h1><h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><ul>
+<li>在Go中，独立的任务叫做gorotine<ul>
+<li>虽然goroutine与其它语言中的协程、进程、线程都有相似之处，但是goroutine和他们并不完全相同</li>
+<li>Goroutine 创建效率非常高</li>
+<li>Go能直接了当的协同多个并发（concurrent）操作</li>
+</ul>
+</li>
+<li>在某些语言中，将顺序式代码转化为并发式代码需要做大量的修改</li>
+<li>在Go里，无需修改现有顺序式代码，通过goroutie以并发的方式运行任意数量的任务 </li>
+<li>每次使用go关键字都会产生一个新的goroutine。</li>
+<li>表面上看，goroutine 似乎在同时运行，其实不然。<ul>
+<li>计算机使用”分时“技术，多个goroutine轮流执行。</li>
+<li>在使用goroutine时，各个goroute执行顺序无法确定</li>
+</ul>
+</li>
+</ul>
+<h2 id="show-me-code"><a href="#show-me-code" class="headerlink" title="show me code"></a>show me code</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++&#123;</span><br><span class="line">        <span class="keyword">go</span> sleepyGopher()</span><br><span class="line">    &#125;</span><br><span class="line">    time.Sleep(<span class="number">4</span> * time.Second)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sleepyGopher</span><span class="params">()</span></span>&#123;</span><br><span class="line">    time.Sleep(<span class="number">3</span>*time.Second)</span><br><span class="line">    fmt.Println(<span class="string">&quot;... snore ...&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>[1] [Get Programming with Go] 《Get Programming with Go》</li>
+<li>[2] [Bilibili] <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fD4y1m7TD">https://www.bilibili.com/video/BV1fD4y1m7TD</a></li>
+</ul>
+
     </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="https://jonnydeep.github.io">PIKAPIKA</a>
+            <p>原文链接：<a href="https://jonnydeep.github.io/2020/12/28/goroutine/">https://jonnydeep.github.io/2020/12/28/goroutine/</a>
+            <p>发表日期：<a href="https://jonnydeep.github.io/2020/12/28/goroutine/">December 28th 2020, 3:13:05 pm</a>
+            <p>更新日期：<a href="https://jonnydeep.github.io/2020/12/28/goroutine/">December 29th 2020, 4:34:31 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/12/28/channel/" title= "channel">
+                    <div class="nextTitle">channel</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/12/23/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%80%E9%9B%86/" title= "算法第一集 算法时间复杂度O">
+                    <div class="prevTitle">算法第一集 算法时间复杂度O</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+    <div id="lv-container" data-id="city" data-uid= MTAyMC81MjI2NS8yODc0NA==>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -457,6 +577,24 @@ show me code12345678910111213141516def binary_search(list,elem):    # 确定二�
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#goroutine"><span class="toc-number">1.</span> <span class="toc-text">goroutine</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">相关概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#show-me-code"><span class="toc-number">1.2.</span> <span class="toc-text">show me code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.3.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -645,6 +783,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>

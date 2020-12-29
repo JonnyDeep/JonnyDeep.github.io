@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://jonnydeep.github.io/tags/Algorithm/index.html">
+<meta property="og:url" content="https://jonnydeep.github.io/tags/channal/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="PIKAPIKA">
@@ -354,26 +354,48 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/12/23/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%80%E9%9B%86/" >
+        <a class="abstract-title" href = "/2020/12/28/channel/" >
             
-                <span>算法第一集 算法时间复杂度O</span>
+                <span>channel</span>
         </a>
         <div class="abstract-content">
-            很长时间不看算法了，整天纠结在业务层面。看似很忙，其实人快废掉了。现在把算法复习一遍，开专题记录一下，复习完开始刷题。期间会记录一下分布式相关的一些知识。
-二分法二分法是用来在有序集合中查找某个元素的查找算法，如果能找个这个元素那么返回该元素的下标，否正返回null。
-示意图
-show me code12345678910111213141516def binary_search(list,elem):    # 确定二分搜索的起始位置和结束位置    low = 0     high = len(list) - 1        # 直到没有元素的时候，循环结束    while lo...
+            go ChannelChannel相关概念
+通道（channel）可以在多个goroutine之间安全的传值。
+通道可以用作变量、函数参数、结构体字段······
+传教通道用make函数，并指定其传输数据的类型
+
+c := make(chan int)
+
+
+
+使用左箭头操作符&lt;-向通道发送值或者从通道接收值
+
+发送：c &lt;- 99
+接收：r := &lt;- c
+
+
+
+发送操作会等待直到另一个goroutine尝试对该通道进行接收操作为止。
+
+执行发送操作的goroutine在等待期间将无法执行其他操作
+未在等待通道操作的goroutine仍然可以继续自由运行
+
+
+
+执行接收...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/12/23</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/12/28</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Algorithm">Algorithm</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "go">go</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "channal">channal</a>
     
 </div>
             
