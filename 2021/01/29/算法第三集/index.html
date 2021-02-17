@@ -20,22 +20,22 @@
     <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="上一章学习了用大$O$表示算法第时间复杂度。以及查找算法中比较基础第二分查找。这一章学习选择排序，以及两种简单第数据结构数组和链表。 基本概念数组数组是相同元素第集合，在内存中是连续的。数组支持索引，因此支持随机访问。但是插入和删除操作会比较耗时。 链表链表是相同元素的集合，在内存中是不连续的。不能随机访问，但是插入和删除会很方便。 两种数据结构的读取和插入的时间复杂度比较：      数组 链表">
+    <meta name="description" content="递归是算法中很重要的一种编程方法。我个人对递归对理解是函数调用自身那么就形成了递归。递归让解决方案更清晰，但是没有性能对优势。  基本概念基线条件和递归条件递归函数调用自己，很容易造成无限循环。例如：123def countdown(i):    print i    countdown(i-1)上面的代码运行后会一直不停。超出范围会报错退出。因此编写递归函数时雪瑶告诉它何时停止。因此每个递归函">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法第二集 选择排序">
-<meta property="og:url" content="https://jonnydeep.github.io/2021/01/18/%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E9%9B%86/index.html">
+<meta property="og:title" content="算法第三集 递归">
+<meta property="og:url" content="https://jonnydeep.github.io/2021/01/29/%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%89%E9%9B%86/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="上一章学习了用大$O$表示算法第时间复杂度。以及查找算法中比较基础第二分查找。这一章学习选择排序，以及两种简单第数据结构数组和链表。 基本概念数组数组是相同元素第集合，在内存中是连续的。数组支持索引，因此支持随机访问。但是插入和删除操作会比较耗时。 链表链表是相同元素的集合，在内存中是不连续的。不能随机访问，但是插入和删除会很方便。 两种数据结构的读取和插入的时间复杂度比较：      数组 链表">
+<meta property="og:description" content="递归是算法中很重要的一种编程方法。我个人对递归对理解是函数调用自身那么就形成了递归。递归让解决方案更清晰，但是没有性能对优势。  基本概念基线条件和递归条件递归函数调用自己，很容易造成无限循环。例如：123def countdown(i):    print i    countdown(i-1)上面的代码运行后会一直不停。超出范围会报错退出。因此编写递归函数时雪瑶告诉它何时停止。因此每个递归函">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-18T12:17:17.650Z">
-<meta property="article:modified_time" content="2021-01-18T13:34:34.379Z">
+<meta property="article:published_time" content="2021-01-29T11:09:14.000Z">
+<meta property="article:modified_time" content="2021-01-29T12:19:58.828Z">
 <meta property="article:author" content="PIKAPIKA">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
-    <title>算法第二集 选择排序 · PIKAPIKA&#39;s Blog</title>
+    <title>算法第三集 递归 · PIKAPIKA&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -230,7 +230,7 @@
                 <a href="/" >PIKAPIKA&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">算法第二集 选择排序</a>
+                <a href="#" class="post-name">算法第三集 递归</a>
             </div>
     </div>
     
@@ -260,7 +260,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            算法第二集 选择排序
+            算法第三集 递归
             <!-- 404 -->
             
         </h1>
@@ -285,12 +285,12 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">518</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">353</span>Reading time: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2021/01/18</span>
+                    <span class="post-intro-time">2021/01/29</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -414,86 +414,27 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>上一章学习了用大$O$表示算法第时间复杂度。以及查找算法中比较基础第二分查找。这一章学习选择排序，以及两种简单第数据结构数组和链表。</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>数组是相同元素第集合，在内存中是连续的。数组支持索引，因此支持随机访问。但是插入和删除操作会比较耗时。</p>
-<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><p>链表是相同元素的集合，在内存中是不连续的。不能随机访问，但是插入和删除会很方便。</p>
-<p>两种数据结构的读取和插入的时间复杂度比较：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th></th>
-<th>数组</th>
-<th>链表</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>读取</td>
-<td>$O(1)$</td>
-<td>$O(n)$</td>
-</tr>
-<tr>
-<td>插入</td>
-<td>$O(n)$</td>
-<td>$O(1)$</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>假设你的计算机中有很多歌曲，对于每个乐队都记录其作品的播放次数。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>乐队</th>
-<th>播放次数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PADIOHEAD</td>
-<td>156</td>
-</tr>
-<tr>
-<td>KISDHORE KuMAR</td>
-<td>141</td>
-</tr>
-<tr>
-<td>THE BLACK KEYS</td>
-<td>35</td>
-</tr>
-<tr>
-<td>NEUTRAL MILK HOTEL</td>
-<td>194</td>
-</tr>
-<tr>
-<td>BECK</td>
-<td>61</td>
-</tr>
-<tr>
-<td>THE STROKES</td>
-<td>61</td>
-</tr>
-<tr>
-<td>WILCO</td>
-<td>111</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>你需要将这个列表按播放次数从多到少排列，从而找出你最喜欢的乐队。怎么做？</p>
-<p>一种办法是遍历乐队找出播放次数最多的乐队，将该乐队添加到一个新表中。再按此方法找出第二喜欢的乐队，直至结束。<br>每次遍历的时间复杂度是$O(n)$，一共遍历了n次，因此该方法的时间复杂度是$O(n^{2})$<br>检查的总个数是：$n+(n-1)+(n-2)+\dots+1$<br>平均每次检查的个数：$\frac{n+1}{2}$<br>时间复杂度：$O(n\times\frac{n+1}{2})$</p>
-<p>该方法虽然灵活，但是时间复杂度不是特别好。</p>
-<h2 id="show-me-code"><a href="#show-me-code" class="headerlink" title="show me code"></a>show me code</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findSmallest</span>(<span class="params">arr</span>):</span></span><br><span class="line">    smallest = arr[<span class="number">0</span>]                        <span class="comment">#---------最小值</span></span><br><span class="line">    smallest_index = <span class="number">0</span>                       <span class="comment">#---------最小值索引</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(arr)):</span><br><span class="line">        <span class="keyword">if</span> smallest &lt; arr[i]:</span><br><span class="line">            smallest  = arr[i]</span><br><span class="line">            smallest_index = i</span><br><span class="line">    <span class="keyword">return</span> smallest_index</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selectSort</span>(<span class="params">arr</span>):</span></span><br><span class="line">    newArr=[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(arr)):               <span class="comment">#[1,2,3,4,...,len(arr)] 不会再变</span></span><br><span class="line">        smallest = findSmallest(arr)        <span class="comment">#找出最小值下标</span></span><br><span class="line">        newArr.append(arr.pop(smallest))    <span class="comment">#将最小值从原数组拿出，放入到新数组中</span></span><br><span class="line">    <span class="keyword">return</span> newArr</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> selectSort([<span class="number">2</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">23</span>,<span class="number">10</span>])</span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>递归是算法中很重要的一种编程方法。我个人对递归对理解是函数调用自身那么就形成了递归。递归让解决方案更清晰，但是没有性能对优势。</p>
+</blockquote>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="基线条件和递归条件"><a href="#基线条件和递归条件" class="headerlink" title="基线条件和递归条件"></a>基线条件和递归条件</h2><p>递归函数调用自己，很容易造成无限循环。例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countdown</span>(<span class="params">i</span>):</span></span><br><span class="line">    <span class="built_in">print</span> i</span><br><span class="line">    countdown(i-<span class="number">1</span>)</span><br></pre></td></tr></table></figure><br>上面的代码运行后会一直不停。超出范围会报错退出。因此编写递归函数时雪瑶告诉它何时停止。因此每个递归函数有两部分：基线条件（base case）和递归条件（recursive case）。</p>
+<ul>
+<li>递归条件：函数调用自己</li>
+<li>基线条件：函数不再调用自己。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countdown</span>(<span class="params">i</span>):</span></span><br><span class="line">    <span class="built_in">print</span> i</span><br><span class="line">    <span class="keyword">if</span> i&lt;= <span class="number">1</span>:           <span class="comment">#&lt;--------base case</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">else</span>:               <span class="comment">#&lt;--------recuresive case</span></span><br><span class="line">        countdown(i-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>栈是一种数据结构，它是一种相同元素的集合。先入栈的元素在栈尾，后入栈的元素在栈头。先进后出（FILO）。</p>
+<h2 id="调用栈"><a href="#调用栈" class="headerlink" title="调用栈"></a>调用栈</h2><p>计算机在内部使用被称为调用栈的栈。计算机是如何使用调用栈的呢。看下面的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">greet</span>(<span class="params">name</span>):</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;hello, &quot;</span>+name+<span class="string">&quot;!&quot;</span></span><br><span class="line">    greet2(name)</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;getting ready to say bye...&quot;</span></span><br><span class="line">    bye()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">greet2</span>(<span class="params">name</span>):</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;how are you,&quot;</span>+name+<span class="string">&quot;?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bye</span>():</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;ok bye!&quot;</span></span><br></pre></td></tr></table></figure><br>你调用greet(“maggie”),计算机将首先为该函数调用分配一块内存。</p>
+<p>计算机</p>
+
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>Author：<a href="https://jonnydeep.github.io">PIKAPIKA</a>
-            <p>原文链接：<a href="https://jonnydeep.github.io/2021/01/18/%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E9%9B%86/">https://jonnydeep.github.io/2021/01/18/%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E9%9B%86/</a>
-            <p>发表日期：<a href="https://jonnydeep.github.io/2021/01/18/%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E9%9B%86/">January 18th 2021, 8:17:17 pm</a>
-            <p>更新日期：<a href="https://jonnydeep.github.io/2021/01/18/%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E9%9B%86/">January 18th 2021, 9:34:34 pm</a>
+            <p>原文链接：<a href="https://jonnydeep.github.io/2021/01/29/%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%89%E9%9B%86/">https://jonnydeep.github.io/2021/01/29/%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%89%E9%9B%86/</a>
+            <p>发表日期：<a href="https://jonnydeep.github.io/2021/01/29/%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%89%E9%9B%86/">January 29th 2021, 7:09:14 pm</a>
+            <p>更新日期：<a href="https://jonnydeep.github.io/2021/01/29/%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%89%E9%9B%86/">January 29th 2021, 8:19:58 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -501,17 +442,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2021/01/29/%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%89%E9%9B%86/" title= "算法第三集 递归">
-                    <div class="nextTitle">算法第三集 递归</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2021/01/07/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%80%E9%9B%86/" title= "算法第一集 算法时间复杂度 $O$">
-                    <div class="prevTitle">算法第一集 算法时间复杂度 $O$</div>
+                <a href= "/2021/01/18/%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E9%9B%86/" title= "算法第二集 选择排序">
+                    <div class="prevTitle">算法第二集 选择排序</div>
                 </a>
             
         </li>
@@ -640,7 +576,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">1.1.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-number">1.2.</span> <span class="toc-text">链表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">选择排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#show-me-code"><span class="toc-number">3.</span> <span class="toc-text">show me code</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%BA%BF%E6%9D%A1%E4%BB%B6%E5%92%8C%E9%80%92%E5%BD%92%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">基线条件和递归条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">1.2.</span> <span class="toc-text">栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%A0%88"><span class="toc-number">1.3.</span> <span class="toc-text">调用栈</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
